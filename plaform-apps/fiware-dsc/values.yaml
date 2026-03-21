@@ -48,6 +48,22 @@ postgis:
 apisix:
   catchAllRoute:
     enabled: false
+  etcd:
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: "1"
+        memory: 1Gi
+    livenessProbe:
+      initialDelaySeconds: 120
+      timeoutSeconds: 10
+      failureThreshold: 10
+    readinessProbe:
+      initialDelaySeconds: 120
+      timeoutSeconds: 10
+      failureThreshold: 10
 
 keycloak:
   auth:
