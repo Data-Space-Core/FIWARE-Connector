@@ -32,6 +32,11 @@ postgresql:
     secretKeys:
       adminPasswordKey: postgres-admin-password
       userPasswordKey: postgres-user-password
+  primary:
+    persistentVolumeClaimRetentionPolicy:
+      enabled: true
+      whenDeleted: Delete
+      whenScaled: Delete
 
 postgis:
   auth:
