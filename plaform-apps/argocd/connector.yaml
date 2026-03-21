@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fiware-dsc
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Data-Space-Core/FIWARE-Connector.git
+    targetRevision: main
+    path: plaform-apps/fiware-dsc
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: fiware-dsc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

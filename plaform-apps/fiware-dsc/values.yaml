@@ -1,0 +1,81 @@
+# Starter values for deploying the FIWARE Data Space Connector chart via Argo CD
+# into the gx-participant1 tenant.
+#
+# Assumptions baked into this file:
+# - the tenant base host is gx-participant1.dil.collab-cloud.eu
+# - the existing participant DID remains the canonical DID for EDC-facing flows
+# - a Keycloak route will be published later at /auth on the tenant host
+# - TM Forum and contract-management APIs stay disabled until their routes and
+#   external integrations are wired explicitly
+
+authentication:
+  generatePasswords:
+    enabled: false
+
+dataplane:
+  generatePasswords:
+    enabled: false
+
+issuance:
+  generatePasswords:
+    enabled: false
+
+mysql:
+  auth:
+    existingSecret: authentication-database-secret
+
+postgresql:
+  generatePasswords:
+    enabled: false
+  auth:
+    existingSecret: database-secret
+    secretKeys:
+      adminPasswordKey: postgres-admin-password
+      userPasswordKey: postgres-user-password
+
+postgis:
+  auth:
+    existingSecret: data-service-secret
+    secretKeys:
+      adminPasswordKey: postgres-admin-password
+      userPasswordKey: postgres-user-password
+
+apisix:
+  catchAllRoute:
+    enabled: false
+
+keycloak:
+  auth:
+    existingSecret: issuance-secret
+    passwordSecretKey: keycloak-admin
+    adminUser: keycloak-admin
+  realm:
+    name: gx-participant1
+    frontendURL: https://gx-participant1.dil.collab-cloud.eu/auth
+
+tm-forum-api:
+  enabled: false
+
+contract-management:
+  enabled: false
+
+did:
+  enabled: false
+
+didJson:
+  enabled: false
+
+dataSpaceConfig:
+  enabled: false
+
+fdsc-edc:
+  enabled: true
+  common:
+    config:
+      tmfExtension:
+        enabled: false
+      fdscTransfer:
+        enabled: false
+      edc:
+        participant:
+          id: did:web:gx-participant1.dil.collab-cloud.eu:identity

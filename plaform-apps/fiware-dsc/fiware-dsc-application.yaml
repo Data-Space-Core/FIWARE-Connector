@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fiware-dsc-stack
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: fiware-dsc
+  sources:
+    - repoURL: https://fiware.github.io/data-space-connector/
+      chart: data-space-connector
+      targetRevision: 8.5.2
+      helm:
+        releaseName: fiware-dsc
+        valueFiles:
+          - $values/plaform-apps/fiware-dsc/values.yaml
+    - repoURL: https://github.com/Data-Space-Core/FIWARE-Connector.git
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: fiware-dsc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
