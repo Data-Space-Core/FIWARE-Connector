@@ -49,6 +49,10 @@ keycloak:
     existingSecret: issuance-secret
     passwordSecretKey: keycloak-admin
     adminUser: keycloak-admin
+  extraVolumes:
+    - name: realms
+      configMap:
+        name: gx-participant1-realm
   realm:
     name: gx-participant1
     frontendURL: https://gx-participant1.dil.collab-cloud.eu/auth
