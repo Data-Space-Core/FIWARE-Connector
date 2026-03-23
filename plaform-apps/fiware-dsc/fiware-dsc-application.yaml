@@ -15,6 +15,8 @@ spec:
       jsonPointers:
         - /spec/persistentVolumeClaimRetentionPolicy
         - /spec/podManagementPolicy
+        - /spec/revisionHistoryLimit
+        - /spec/updateStrategy
     - group: apps
       kind: StatefulSet
       name: data-service-postgis
@@ -22,13 +24,16 @@ spec:
       jsonPointers:
         - /spec/persistentVolumeClaimRetentionPolicy
         - /spec/podManagementPolicy
-        - /spec/updateStrategy/rollingUpdate
+        - /spec/revisionHistoryLimit
+        - /spec/updateStrategy
     - group: apps
       kind: StatefulSet
       name: fiware-dsc-etcd
       namespace: fiware-dsc
       jsonPointers:
         - /spec/persistentVolumeClaimRetentionPolicy
+        - /spec/revisionHistoryLimit
+        - /spec/updateStrategy
     - group: apps
       kind: StatefulSet
       name: postgresql
@@ -36,7 +41,8 @@ spec:
       jsonPointers:
         - /spec/persistentVolumeClaimRetentionPolicy
         - /spec/podManagementPolicy
-        - /spec/updateStrategy/rollingUpdate
+        - /spec/revisionHistoryLimit
+        - /spec/updateStrategy
   sources:
     - repoURL: https://fiware.github.io/data-space-connector/
       chart: data-space-connector
