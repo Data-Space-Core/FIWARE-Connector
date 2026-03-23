@@ -7,6 +7,29 @@ metadata:
     argocd.argoproj.io/sync-wave: "1"
 spec:
   project: fiware-dsc
+  ignoreDifferences:
+    - group: ""
+      kind: Secret
+      name: fiware-dsc-etcd-jwt-token
+      namespace: fiware-dsc
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: apisixclusterconfigs.apisix.apache.org
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: apisixconsumers.apisix.apache.org
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: apisixglobalrules.apisix.apache.org
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: apisixpluginconfigs.apisix.apache.org
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: apisixroutes.apisix.apache.org
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: apisixtlses.apisix.apache.org
   sources:
     - repoURL: https://fiware.github.io/data-space-connector/
       chart: data-space-connector
