@@ -56,6 +56,9 @@ postgis:
 apisix:
   catchAllRoute:
     enabled: false
+  dataPlane:
+    service:
+      type: ClusterIP
   etcd:
     auth:
       token:
