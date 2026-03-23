@@ -23,6 +23,9 @@ issuance:
 mysql:
   auth:
     existingSecret: authentication-database-secret
+  primary:
+    persistence:
+      storageClass: longhorn-1replica
 
 postgresql:
   generatePasswords:
@@ -33,6 +36,8 @@ postgresql:
       adminPasswordKey: postgres-admin-password
       userPasswordKey: postgres-user-password
   primary:
+    persistence:
+      storageClass: longhorn-1replica
     persistentVolumeClaimRetentionPolicy:
       enabled: true
       whenDeleted: Delete
@@ -44,6 +49,9 @@ postgis:
     secretKeys:
       adminPasswordKey: postgres-admin-password
       userPasswordKey: postgres-user-password
+  primary:
+    persistence:
+      storageClass: longhorn-1replica
 
 apisix:
   catchAllRoute:
