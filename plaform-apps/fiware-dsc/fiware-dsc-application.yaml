@@ -17,6 +17,10 @@ spec:
         - /spec/podManagementPolicy
         - /spec/revisionHistoryLimit
         - /spec/updateStrategy
+        - /spec/volumeClaimTemplates/0/apiVersion
+        - /spec/volumeClaimTemplates/0/kind
+        - /spec/volumeClaimTemplates/0/spec/volumeMode
+        - /spec/volumeClaimTemplates/0/status
     - group: apps
       kind: StatefulSet
       name: data-service-postgis
@@ -26,6 +30,10 @@ spec:
         - /spec/podManagementPolicy
         - /spec/revisionHistoryLimit
         - /spec/updateStrategy
+        - /spec/volumeClaimTemplates/0/apiVersion
+        - /spec/volumeClaimTemplates/0/kind
+        - /spec/volumeClaimTemplates/0/spec/volumeMode
+        - /spec/volumeClaimTemplates/0/status
     - group: apps
       kind: StatefulSet
       name: fiware-dsc-etcd
@@ -34,6 +42,10 @@ spec:
         - /spec/persistentVolumeClaimRetentionPolicy
         - /spec/revisionHistoryLimit
         - /spec/updateStrategy
+        - /spec/volumeClaimTemplates/0/apiVersion
+        - /spec/volumeClaimTemplates/0/kind
+        - /spec/volumeClaimTemplates/0/spec/volumeMode
+        - /spec/volumeClaimTemplates/0/status
     - group: apps
       kind: StatefulSet
       name: postgresql
@@ -43,6 +55,10 @@ spec:
         - /spec/podManagementPolicy
         - /spec/revisionHistoryLimit
         - /spec/updateStrategy
+        - /spec/volumeClaimTemplates/0/apiVersion
+        - /spec/volumeClaimTemplates/0/kind
+        - /spec/volumeClaimTemplates/0/spec/volumeMode
+        - /spec/volumeClaimTemplates/0/status
   sources:
     - repoURL: https://fiware.github.io/data-space-connector/
       chart: data-space-connector
