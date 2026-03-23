@@ -49,6 +49,8 @@ apisix:
   catchAllRoute:
     enabled: false
   etcd:
+    persistence:
+      enabled: true
     preUpgradeJob:
       enabled: false
     resources:
