@@ -51,6 +51,7 @@ apisix:
   etcd:
     persistence:
       enabled: true
+      storageClass: longhorn-1replica
     preUpgradeJob:
       enabled: false
     resources:
