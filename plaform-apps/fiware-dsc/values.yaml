@@ -72,7 +72,7 @@ keycloak:
     existingSecret: issuance-secret
     passwordSecretKey: keycloak-admin
     adminUser: keycloak-admin
-  volumes:
+  extraVolumes:
     - name: realms
       emptyDir: {}
   extraEnvVars:
