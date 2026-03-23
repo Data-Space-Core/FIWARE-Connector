@@ -53,11 +53,11 @@ apisix:
       enabled: false
     resources:
       requests:
-        cpu: 500m
-        memory: 512Mi
-      limits:
-        cpu: "1"
+        cpu: 750m
         memory: 1Gi
+      limits:
+        cpu: "2"
+        memory: 2Gi
     livenessProbe:
       initialDelaySeconds: 120
       timeoutSeconds: 10
