@@ -8,34 +8,42 @@ metadata:
 spec:
   project: fiware-dsc
   ignoreDifferences:
-    - group: ""
-      kind: Secret
-      name: fiware-dsc-etcd-jwt-token
+    - group: apps
+      kind: StatefulSet
+      name: authentication-mysql
       namespace: fiware-dsc
-    - group: apiextensions.k8s.io
-      kind: CustomResourceDefinition
-      name: apisixclusterconfigs.apisix.apache.org
-    - group: apiextensions.k8s.io
-      kind: CustomResourceDefinition
-      name: apisixconsumers.apisix.apache.org
-    - group: apiextensions.k8s.io
-      kind: CustomResourceDefinition
-      name: apisixglobalrules.apisix.apache.org
-    - group: apiextensions.k8s.io
-      kind: CustomResourceDefinition
-      name: apisixpluginconfigs.apisix.apache.org
-    - group: apiextensions.k8s.io
-      kind: CustomResourceDefinition
-      name: apisixroutes.apisix.apache.org
-    - group: apiextensions.k8s.io
-      kind: CustomResourceDefinition
-      name: apisixtlses.apisix.apache.org
+      jsonPointers:
+        - /spec/persistentVolumeClaimRetentionPolicy
+        - /spec/podManagementPolicy
+    - group: apps
+      kind: StatefulSet
+      name: data-service-postgis
+      namespace: fiware-dsc
+      jsonPointers:
+        - /spec/persistentVolumeClaimRetentionPolicy
+        - /spec/podManagementPolicy
+        - /spec/updateStrategy/rollingUpdate
+    - group: apps
+      kind: StatefulSet
+      name: fiware-dsc-etcd
+      namespace: fiware-dsc
+      jsonPointers:
+        - /spec/persistentVolumeClaimRetentionPolicy
+    - group: apps
+      kind: StatefulSet
+      name: postgresql
+      namespace: fiware-dsc
+      jsonPointers:
+        - /spec/persistentVolumeClaimRetentionPolicy
+        - /spec/podManagementPolicy
+        - /spec/updateStrategy/rollingUpdate
   sources:
     - repoURL: https://fiware.github.io/data-space-connector/
       chart: data-space-connector
       targetRevision: 8.5.2
       helm:
         releaseName: fiware-dsc
+        skipCrds: true
         valueFiles:
           - $values/plaform-apps/fiware-dsc/values.yaml
     - repoURL: https://github.com/Data-Space-Core/FIWARE-Connector.git

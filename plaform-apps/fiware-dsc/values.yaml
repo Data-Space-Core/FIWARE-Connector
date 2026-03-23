@@ -49,6 +49,10 @@ apisix:
   catchAllRoute:
     enabled: false
   etcd:
+    auth:
+      token:
+        privateKey:
+          existingSecret: fiware-dsc-etcd-jwt-token
     persistence:
       enabled: true
       storageClass: longhorn-1replica
