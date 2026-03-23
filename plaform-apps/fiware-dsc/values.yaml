@@ -72,6 +72,9 @@ keycloak:
     existingSecret: issuance-secret
     passwordSecretKey: keycloak-admin
     adminUser: keycloak-admin
+  volumes:
+    - name: realms
+      emptyDir: {}
   extraEnvVars:
     - name: KEYCLOAK_EXTRA_ARGS
       value: "--health-enabled true"
