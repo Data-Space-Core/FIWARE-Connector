@@ -49,6 +49,8 @@ apisix:
   catchAllRoute:
     enabled: false
   etcd:
+    preUpgradeJob:
+      enabled: false
     resources:
       requests:
         cpu: 500m
